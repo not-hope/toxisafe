@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.toxisafe.ui.controller.ExpuestoController"
+            stylesheets="@/com/toxisafe/ui/css/clean-theme.css">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding:10;">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <children>
+                <Label fx:id="lblTitulo" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Button fx:id="btnSintomas" text="Sintomas" onAction="#handleSintomas">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2b-bacteria" iconSize="16" iconColor="WHITE"/>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnIngestas" text="Ingestas" onAction="#handleIngestas">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2f-food" iconSize="16" iconColor="WHITE"/>
+                    </graphic>
+                </Button>
+                <HBox spacing="10" alignment="CENTER_LEFT" styleClass="search-bar"
+                      style="-fx-min-width:300; -fx-pref-width:300; -fx-max-width:300;">
+                    <TextField fx:id="txtFiltro" promptText="Buscar" styleClass="search-field" HBox.hgrow="ALWAYS"/>
+                </HBox>
+                <Button fx:id="btnNuevo" text="Nuevo expuesto" onAction="#handleNuevo" styleClass="btn-open">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2p-plus" iconSize="16" iconColor="WHITE"/>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnEditar" text="Editar" onAction="#handleEditar">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2p-pencil" iconSize="16" iconColor="WHITE"/>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnEliminar" text="Eliminar" onAction="#handleEliminar" styleClass="btn-danger">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2d-delete" iconSize="16" iconColor="WHITE"/>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnCerrar" text="Atras" onAction="#handleCerrar" styleClass="btn-close">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2a-arrow-left-bold" iconSize="16" iconColor="WHITE"/>
+                    </graphic>
+                </Button>
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tabla" styleClass="table-elevated">
+            <columns>
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="140"/>
+                <TableColumn fx:id="colApellido" text="Apellido" prefWidth="140"/>
+                <TableColumn fx:id="colSexo" text="Sexo" prefWidth="70"/>
+                <TableColumn fx:id="colEdad" text="Edad" prefWidth="70"/>
+                <TableColumn fx:id="colTfno" text="Teléfonos" prefWidth="160"/>
+                <TableColumn fx:id="colAM" text="A. Médica" prefWidth="90"/>
+                <TableColumn fx:id="colEC" text="Coprocultivo OK" prefWidth="120"/>
+                <TableColumn fx:id="colEF" text="Frotis OK" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>

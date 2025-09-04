@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.toxisafe.ui.controller.MainController"
+            prefWidth="900" prefHeight="600"
+            stylesheets="@/com/toxisafe/ui/css/clean-theme.css">
+
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT" styleClass="header-bar">
+            <Label text="TOXISAFE" styleClass="header-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="lblUsuario" styleClass="header-user"/>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox prefWidth="200" spacing="10"
+              styleClass="sidebar" BorderPane.alignment="CENTER_LEFT">
+            <Button text="Inicio"   onAction="#showDashboard" styleClass="nav-button" maxWidth="Infinity"/>
+            <Button fx:id="btnUsuarios" text="Usuarios"    onAction="#showUsuarios" styleClass="nav-button" maxWidth="Infinity"/>
+            <Button text="Brotes" onAction="#showBrotes" styleClass="nav-button" maxWidth="Infinity"/>
+            <Button text="Configuración" onAction="#showConfig" styleClass="nav-button" maxWidth="Infinity"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Cerrar sesión" onAction="#logout" styleClass="sidebar-logout" maxWidth="Infinity"/>
+        </VBox>
+    </left>
+
+    <center>
+        <AnchorPane fx:id="contentArea" id="contentArea"/>
+    </center>
+
+</BorderPane>

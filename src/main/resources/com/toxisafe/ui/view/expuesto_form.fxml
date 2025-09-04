@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.toxisafe.ui.controller.ExpuestoFormController"
+      prefWidth="1000" prefHeight="480"
+      stylesheets="@/com/toxisafe/ui/css/clean-theme.css">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <children>
+        <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+
+            <tabs>
+                <Tab text="Datos">
+                    <content>
+                        <GridPane hgap="10" vgap="8" style="-fx-padding:6;" maxWidth="900">
+                            <columnConstraints>
+                                <ColumnConstraints halignment="RIGHT" minWidth="100"/>
+                                <ColumnConstraints hgrow="ALWAYS" prefWidth="320"/>
+                                <ColumnConstraints halignment="RIGHT" minWidth="100"/>
+                                <ColumnConstraints hgrow="ALWAYS" prefWidth="320"/>
+                            </columnConstraints>
+
+                            <children>
+                                <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                <TextField fx:id="txtNombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                                <Label text="Apellido:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                                <TextField fx:id="txtApellido" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                                <Label text="Sexo:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                <ComboBox fx:id="cmbSexo" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                                <Label text="Edad:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                                <Spinner fx:id="spEdad" editable="true" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                                <Label text="Teléfono 1:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                <TextField fx:id="txtTfno1" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                                <Label text="Teléfono 2:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                                <TextField fx:id="txtTfno2" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+                                <Label text="Tipo Doc:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                <ComboBox fx:id="cmbTipoDoc" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                                <Label text="Nº Doc:" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+                                <TextField fx:id="txtNumDoc" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+
+                                <Label text="NHUSA:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                                <TextField fx:id="txtNHUSA" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                                <Label text="Nacimiento:" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+                                <DatePicker fx:id="dpNacimiento" GridPane.rowIndex="4" GridPane.columnIndex="3"/>
+
+                                <Label text="Dirección:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                                <TextField fx:id="txtDireccion" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+                                <Label text="Centro Salud:" GridPane.rowIndex="5" GridPane.columnIndex="2"/>
+                                <TextField fx:id="txtCentro" GridPane.rowIndex="5" GridPane.columnIndex="3"/>
+
+                                <Label text="Profesión:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                                <TextField fx:id="txtProfesion" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+                                <Label text="Grupo:" GridPane.rowIndex="6" GridPane.columnIndex="2"/>
+                                <TextField fx:id="txtGrupo" GridPane.rowIndex="6" GridPane.columnIndex="3"/>
+
+                                <CheckBox fx:id="chkManipulador" text="Manipulador" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+                                <CheckBox fx:id="chkEnfermo" text="Enfermo" GridPane.rowIndex="7" GridPane.columnIndex="3"/>
+                            </children>
+                        </GridPane>
+                    </content>
+                </Tab>
+
+                <Tab text="Atención">
+                    <content>
+                        <GridPane hgap="10" vgap="8" style="-fx-padding:6;">
+                            <columnConstraints>
+                                <ColumnConstraints halignment="RIGHT" minWidth="100"/>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                                <ColumnConstraints halignment="RIGHT" minWidth="100"/>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                            </columnConstraints>
+
+                            <children>
+                                <CheckBox fx:id="chkAMedica" text="Atención Médica" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                <CheckBox fx:id="chkAHosp" text="Atención Hospitalaria" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                                <Label text="Fecha Atención Médica:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                <DatePicker fx:id="dpAMedica" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                                <Label text="Lugar Atención Médica:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                                <TextField fx:id="txtLugarAMedica" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                                <Label text="Evolución:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                <TextArea fx:id="txaEvolucion" prefRowCount="3" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                                <Label text="Tratamiento:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                                <TextArea fx:id="txaTratamiento" prefRowCount="3" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+                            </children>
+                        </GridPane>
+                    </content>
+                </Tab>
+
+                <Tab text="Coprocultivo">
+                    <content>
+                        <GridPane hgap="10" vgap="8" style="-fx-padding:6;">
+                            <columnConstraints>
+                                <ColumnConstraints halignment="RIGHT" minWidth="100"/>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                                <ColumnConstraints halignment="RIGHT" minWidth="100"/>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                            </columnConstraints>
+
+                            <children>
+                                <CheckBox fx:id="chkSolCopro" text="Solicitud" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                <CheckBox fx:id="chkEstCopro" text="Resultado OK" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                                <Label text="Fecha:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                <DatePicker fx:id="dpCopro" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                                <Label text="Laboratorio:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                                <TextField fx:id="txtLabCopro" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                                <Label text="Resultado:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                <TextField fx:id="txtResCopro" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                                <Label text="Patógeno:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                                <TextField fx:id="txtPatCopro" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+                                <Label text="Observaciones:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                <TextArea fx:id="txaObsCopro" prefRowCount="3" GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
+                            </children>
+                        </GridPane>
+                    </content>
+                </Tab>
+
+                <Tab text="Frotis">
+                    <content>
+                        <GridPane hgap="10" vgap="8" style="-fx-padding:6;">
+                            <columnConstraints>
+                                <ColumnConstraints halignment="RIGHT" minWidth="100"/>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                                <ColumnConstraints halignment="RIGHT" minWidth="100"/>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                            </columnConstraints>
+
+                            <children>
+                                <CheckBox fx:id="chkSolFrotis" text="Solicitud" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                <CheckBox fx:id="chkEstFrotis" text="Resultado OK" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                                <Label text="Fecha:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                <DatePicker fx:id="dpFrotis" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                                <Label text="Laboratorio:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                                <TextField fx:id="txtLabFrotis" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                                <Label text="Resultado:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                <TextField fx:id="txtResFrotis" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                                <Label text="Patógeno:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                                <TextField fx:id="txtPatFrotis" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+                                <Label text="Observaciones:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                <TextArea fx:id="txaObsFrotis" prefRowCount="3" GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
+                            </children>
+                        </GridPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <children>
+                <Label fx:id="lblErrores" style="-fx-text-fill: #c00;" HBox.hgrow="ALWAYS"/>
+
+                <Button fx:id="btnGuardar" text="Guardar" onAction="#handleGuardar">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2a-account-plus" iconSize="16" iconColor="WHITE"/>
+                    </graphic>
+                </Button>
+                <Button text="Cancelar" onAction="#handleCancelar" styleClass="btn-close">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2c-close-thick" iconSize="16" iconColor="WHITE"/>
+                    </graphic>
+                </Button>
+            </children>
+        </HBox>
+    </children>
+</VBox>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.toxisafe.ui.controller.InformeController"
+      spacing="10" prefWidth="900" prefHeight="600"
+      stylesheets="@/com/toxisafe/ui/css/clean-theme.css">
+
+    <!-- Header -->
+    <HBox spacing="10" alignment="CENTER_LEFT" VBox.vgrow="NEVER" style="-fx-padding: 6 10 0 10;">
+        <Label text="Informe" style="-fx-font-weight: bold; -fx-font-size: 16;" />
+        <Label fx:id="lblTitulo" style="-fx-font-size: 16;" />
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label text="Estado:" />
+        <Label fx:id="lblEstadoBrote" />
+    </HBox>
+
+    <!-- Cuerpo -->
+    <HBox spacing="10" VBox.vgrow="ALWAYS" style="-fx-padding: 0 10 0 10;">
+        <!-- Lista de informes -->
+        <VBox spacing="6" HBox.hgrow="NEVER" prefWidth="280">
+            <Label text="Informes previos" style="-fx-font-weight: bold;" />
+            <ListView fx:id="lvInformes" prefHeight="400" />
+            <HBox spacing="6">
+                <Button fx:id="btnEliminarSel" text="Eliminar" onAction="#handleEliminarSeleccionado" styleClass="btn-danger">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2d-delete" iconSize="16" iconColor="WHITE"/>
+                    </graphic>
+                </Button>
+            </HBox>
+        </VBox>
+
+        <!-- Editor -->
+        <VBox spacing="6" HBox.hgrow="ALWAYS">
+            <Label text="Contenido" style="-fx-font-weight: bold;" />
+            <TextArea fx:id="txtContenido" wrapText="true" prefRowCount="20" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </HBox>
+
+    <!-- Botonera -->
+    <HBox spacing="8" alignment="CENTER_RIGHT" VBox.vgrow="NEVER" style="-fx-padding: 0 10 10 10;">
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="btnGenerar" text="Generar resumen" onAction="#handleGenerarResumen">
+            <graphic>
+                <FontIcon iconLiteral="mdi2f-file-document" iconSize="16" iconColor="WHITE"/>
+            </graphic>
+        </Button>
+        <Button fx:id="btnGuardarNuevo" text="Nuevo informe" onAction="#handleGuardarNuevo" styleClass="btn-open">
+            <graphic>
+                <FontIcon iconLiteral="mdi2p-plus" iconSize="16" iconColor="WHITE"/>
+            </graphic>
+        </Button>
+        <Button fx:id="btnActualizarSel" text="Actualizar" onAction="#handleActualizarSeleccionado">
+            <graphic>
+                <FontIcon iconLiteral="mdi2f-file-refresh" iconSize="16" iconColor="WHITE"/>
+            </graphic>
+        </Button>
+        <Button fx:id="btnExportarTxt" text="Exportar" onAction="#handleExportar">
+            <graphic>
+                <FontIcon iconLiteral="mdi2f-file-download" iconSize="16" iconColor="WHITE"/>
+            </graphic>
+        </Button>
+        <Button fx:id="btnCerrar" text="Cerrar" onAction="#handleCerrar" styleClass="btn-close">
+            <graphic>
+                <FontIcon iconLiteral="mdi2c-close-thick" iconSize="16" iconColor="WHITE"/>
+            </graphic>
+        </Button>
+    </HBox>
+</VBox>

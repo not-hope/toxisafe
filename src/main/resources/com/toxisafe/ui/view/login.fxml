@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.toxisafe.ui.controller.LoginController"
+            styleClass="root" prefWidth="400.0" prefHeight="420.0"
+            stylesheets="@/com/toxisafe/ui/css/clean-theme.css">
+
+        <StackPane styleClass="login-root"
+                   AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+                   AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+                <VBox alignment="CENTER" spacing="24">
+                        <Label text="TOXISAFE" alignment="CENTER" styleClass="login-top-title"/>
+
+                        <!-- Tarjeta blanca exterior -->
+                        <VBox alignment="CENTER" spacing="24" maxWidth="640"
+                              styleClass="login-card">
+
+                                <!-- Título -->
+                                <Label text="IDENTIFICACIÓN DE USUARIO" styleClass="login-title"/>
+
+                                        <TextField fx:id="txtUsername" promptText="Usuario"
+                                                   styleClass="login-field"/>
+
+                                        <PasswordField fx:id="txtPassword" promptText="Contraseña"
+                                                       styleClass="login-field" onAction="#handleLogin"/>
+                                        <Label fx:id="lblError" textFill="red" visible="false"
+                                               styleClass="error-label" wrapText="true"/>
+
+
+                                <!-- Botón principal -->
+                                <Button text="Iniciar sesión" onAction="#handleLogin"
+                                        styleClass="login-button"/>
+                        </VBox>
+                </VBox>
+        </StackPane>
+</AnchorPane>
+
+

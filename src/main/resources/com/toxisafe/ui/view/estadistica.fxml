@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.toxisafe.ui.controller.EstadisticaController"
+            stylesheets="@/com/toxisafe/ui/css/clean-theme.css">
+    <children>
+        <VBox spacing="10.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0"
+              AnchorPane.topAnchor="12.0" AnchorPane.bottomAnchor="12.0">
+            <!-- Header -->
+            <HBox spacing="10">
+                <Label fx:id="lblTitulo" text="Estadística del brote" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="btnInforme" text="Abrir informe…" onAction="#handleAbrirInforme">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2f-file-document" iconSize="16" iconColor="WHITE"/>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnRefrescar" text="Refrescar" onAction="#handleRefrescar">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2f-file-refresh" iconSize="16" iconColor="WHITE"/>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnExportarCsv" text="Exportar CSV" onAction="#handleExportarCsv">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2f-file-excel" iconSize="16" iconColor="WHITE"/>
+                    </graphic>
+                </Button>
+            </HBox>
+
+            <!-- Tabs -->
+            <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                <!-- Line list -->
+                <Tab text="Line list">
+                    <BorderPane>
+                        <center>
+                            <TableView fx:id="tvLineList" styleClass="table-elevated">
+                                <columns>
+                                    <TableColumn fx:id="colLLNombre" text="Nombre" prefWidth="150"/>
+                                    <TableColumn fx:id="colLLApellido" text="Apellido" prefWidth="150"/>
+                                    <TableColumn fx:id="colLLIni" text="Inicio (YYYY-MM-DD HH:MM:SS)" prefWidth="200"/>
+                                    <TableColumn fx:id="colLLFin" text="Fin (YYYY-MM-DD HH:MM:SS)" prefWidth="200"/>
+                                    <TableColumn fx:id="colLLNum" text="# Síntomas" prefWidth="100"/>
+                                    <TableColumn fx:id="colLLCaso" text="Caso" prefWidth="75"/>
+                                </columns>
+                            </TableView>
+                        </center>
+                    </BorderPane>
+                </Tab>
+
+                <!-- Curva epidémica -->
+                <Tab text="Curva epidémica">
+                    <BorderPane>
+                        <center>
+                            <BarChart fx:id="chartEpi" prefHeight="400.0" prefWidth="800.0">
+                                <xAxis>
+                                    <CategoryAxis fx:id="epiXAxis"/>
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis fx:id="epiYAxis"/>
+                                </yAxis>
+                            </BarChart>
+                        </center>
+                    </BorderPane>
+                </Tab>
+
+                <!-- Ataque por alimento -->
+                <Tab text="Alimentos">
+                    <BorderPane>
+                        <center>
+                            <TableView fx:id="tvFood">
+                                <columns>
+                                    <TableColumn fx:id="colFAlimento" text="Alimento" prefWidth="200"/>
+                                    <TableColumn fx:id="colFA" text="a" prefWidth="55"/>
+                                    <TableColumn fx:id="colFB" text="b" prefWidth="55"/>
+                                    <TableColumn fx:id="colFC" text="c" prefWidth="55"/>
+                                    <TableColumn fx:id="colFD" text="d" prefWidth="55"/>
+                                    <TableColumn fx:id="colFARExp" text="AR exp." prefWidth="90"/>
+                                    <TableColumn fx:id="colFARNoExp" text="AR no exp." prefWidth="100"/>
+                                    <TableColumn fx:id="colFRR" text="RR" prefWidth="80"/>
+                                    <TableColumn fx:id="colFRRL" text="RR (L)" prefWidth="90"/>
+                                    <TableColumn fx:id="colFRRH" text="RR (H)" prefWidth="90"/>
+                                    <TableColumn fx:id="colFOR" text="OR" prefWidth="80"/>
+                                    <TableColumn fx:id="colFORL" text="OR (L)" prefWidth="90"/>
+                                    <TableColumn fx:id="colFORH" text="OR (H)" prefWidth="90"/>
+                                    <TableColumn fx:id="colFP" text="p (Fisher)" prefWidth="100"/>
+                                </columns>
+                            </TableView>
+                        </center>
+                    </BorderPane>
+                </Tab>
+            </TabPane>
+        </VBox>
+    </children>
+</AnchorPane>

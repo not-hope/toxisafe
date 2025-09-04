@@ -1,0 +1,10 @@
+/* Mantener legibles los controles deshabilitados en modo solo-lectura */
+.readonly .check-box:disabled,
+.readonly .date-picker:disabled,
+.readonly .text-field:disabled,
+.readonly .text-area:disabled,
+.readonly .combo-box-base:disabled,
+.readonly .button:disabled,
+.readonly .label:disabled {
+    -fx-opacity: 1.0;   /* evita el “blanqueado” de Modena */
+}

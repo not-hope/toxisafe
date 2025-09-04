@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<BorderPane fx:controller="com.toxisafe.ui.controller.ExpuestoIngestasController"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            prefWidth="1000" prefHeight="700"
+            stylesheets="@/com/toxisafe/ui/css/clean-theme.css">
+
+    <!-- Header -->
+    <top>
+        <VBox spacing="6" BorderPane.alignment="CENTER">
+            <Label fx:id="lblTitulo"
+                   style="-fx-font-size: 16px; -fx-font-weight: bold;"
+                   text="Ingestas de: " />
+            <ToolBar>
+                <Button fx:id="btnNuevaIngesta" text="Nueva ingesta" onAction="#handleNuevaIngesta" styleClass="btn-open">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2p-plus" iconSize="16" iconColor="WHITE"/>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnEditarIngesta" text="Editar" onAction="#handleEditarIngesta">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2p-pencil" iconSize="16" iconColor="WHITE"/>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnEliminarIngesta" text="Eliminar" onAction="#handleEliminarIngesta" styleClass="btn-danger">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2d-delete" iconSize="16" iconColor="WHITE"/>
+                    </graphic>
+                </Button>
+                <Separator/>
+                <CheckBox fx:id="chkSospechosa" text="Marcar como sospechosa para esta persona"
+                          onAction="#handleToggleSospechosa"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Label fx:id="lblEstadoBrote" text=""/>
+            </ToolBar>
+        </VBox>
+    </top>
+
+    <!-- Centro: izquierda tabla de ingestas / derecha formulario + alimentos -->
+    <center>
+        <SplitPane dividerPositions="0.45">
+            <!-- Tabla de ingestas -->
+            <VBox spacing="8" prefWidth="420.0" VBox.vgrow="ALWAYS">
+                <Label text="Ingestas vinculadas"/>
+                <TableView fx:id="tvIngestas" maxHeight="Infinity">
+                    <columns>
+                        <TableColumn fx:id="colFecha" text="Fecha" prefWidth="120.0"/>
+                        <TableColumn fx:id="colLugar" text="Lugar de consumo" prefWidth="240.0"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <!-- Formulario + Alimentos -->
+            <VBox spacing="12">
+                <padding>
+                    <Insets topRightBottomLeft="10"/>
+                </padding>
+                <TitledPane text="Detalle de ingesta" expanded="true">
+                    <GridPane hgap="10" vgap="10">
+                        <padding>
+                            <Insets topRightBottomLeft="10"/>
+                        </padding>
+                        <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" minWidth="120"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                        </columnConstraints>
+
+                        <Label text="Fecha:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <DatePicker fx:id="dpFecha" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Lugar:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtLugar" promptText="Restaurante / Hogar / Colegio..." GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <HBox spacing="8" GridPane.rowIndex="2" GridPane.columnIndex="1">
+                            <Button fx:id="btnGuardar" text="Guardar" onAction="#handleGuardarIngesta" styleClass="btn-open">
+                                <graphic>
+                                    <FontIcon iconLiteral="mdi2c-content-save" iconSize="16" iconColor="WHITE"/>
+                                </graphic>
+                            </Button>
+                            <Button fx:id="btnCancelar" text="Cancelar" onAction="#handleCancelarEdicion" styleClass="btn-close">
+                                <graphic>
+                                    <FontIcon iconLiteral="mdi2c-close-thick" iconSize="16" iconColor="WHITE"/>
+                                </graphic>
+                            </Button>
+                    </HBox>
+                    </GridPane>
+                </TitledPane>
+
+                <TitledPane text="Alimentos consumidos" expanded="true">
+                    <VBox spacing="8" VBox.vgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="10"/>
+                        </padding>
+                        <TableView fx:id="tvAlimentos" maxHeight="Infinity">
+                            <columns>
+                                <TableColumn fx:id="colAlNombre" text="Alimento" prefWidth="300.0"/>
+                            </columns>
+                        </TableView>
+
+                        <HBox spacing="6">
+                            <ComboBox fx:id="cmbCatalogo" promptText="Catálogo de alimentos" prefWidth="220" editable="true" HBox.hgrow="ALWAYS"/>
+                            <TextField fx:id="txtNuevoAlimento" promptText="Añadir alimento (p. ej. Ensaladilla rusa)" HBox.hgrow="ALWAYS" prefWidth="160"/>
+                        </HBox>
+                        <HBox spacing="6">
+                            <Button fx:id="btnAddAlimento" text="Añadir" onAction="#handleAddAlimento" styleClass="btn-open">
+                                <graphic>
+                                    <FontIcon iconLiteral="mdi2p-plus" iconSize="16" iconColor="WHITE"/>
+                                </graphic>
+                            </Button>
+                            <Button fx:id="btnEditAlimento" text="Renombrar" onAction="#handleEditAlimento">
+                                <graphic>
+                                    <FontIcon iconLiteral="mdi2p-pencil" iconSize="16" iconColor="WHITE"/>
+                                </graphic>
+                            </Button>
+                            <Button fx:id="btnDelAlimento" text="Eliminar" onAction="#handleDelAlimento" styleClass="btn-danger">
+                                <graphic>
+                                    <FontIcon iconLiteral="mdi2d-delete" iconSize="16" iconColor="WHITE"/>
+                                </graphic>
+                            </Button>
+                        </HBox>
+                    </VBox>
+                </TitledPane>
+            </VBox>
+        </SplitPane>
+    </center>
+
+    <padding>
+        <Insets topRightBottomLeft="10"/>
+    </padding>
+</BorderPane>

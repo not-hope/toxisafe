@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.toxisafe.ui.controller.BroteFormController"
+            prefWidth="520" prefHeight="300"
+            stylesheets="@/com/toxisafe/ui/css/clean-theme.css">
+
+    <center>
+        <GridPane hgap="10" vgap="10" style="-fx-padding: 15;">
+            <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtNombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Fecha inicio:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="dpFecha" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Responsable:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="cmbResponsable" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label fx:id="lblErrores" text="" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2"
+                   style="-fx-text-fill: #cc0000;"/>
+        </GridPane>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+            <Button text="Cancelar" onAction="#cancelar" styleClass="btn-close">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2c-close-thick" iconSize="16" iconColor="WHITE"/>
+                </graphic>
+            </Button>
+            <Button text="Guardar"  onAction="#guardar" defaultButton="true" styleClass="btn-open">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2c-content-save" iconSize="16" iconColor="WHITE"/>
+                </graphic>
+            </Button>
+        </HBox>
+    </bottom>
+</BorderPane>

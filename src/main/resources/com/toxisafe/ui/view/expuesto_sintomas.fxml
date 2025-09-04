@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.toxisafe.ui.controller.ExpuestoSintomasController"
+      prefWidth="1350" prefHeight="520"
+      fx:id="root" stylesheets="@/com/toxisafe/ui/css/clean-theme.css"
+      spacing="10" fillWidth="true">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Cabecera -->
+    <VBox spacing="6">
+        <Label fx:id="lblTitulo" text="Síntomas de:" style="-fx-font-size:16px; -fx-font-weight:bold;"/>
+        <Label fx:id="lblEstadoBrote" text="Brote:"/>
+        <Separator/>
+    </VBox>
+
+    <!-- Bloque de grupos dentro de un ScrollPane que crece -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+        <content>
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                <content>
+                    <FlowPane fx:id="flowGrupos" hgap="12" vgap="12" prefWrapLength="1900">
+                        <!-- el controlador añadirá aquí los grupos -->
+                    </FlowPane>
+                </content>
+            </ScrollPane>
+
+        </content>
+    </ScrollPane>
+
+    <!-- Inicio / Fin / Observaciones -->
+    <GridPane hgap="8" vgap="8">
+        <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" minWidth="120"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+            <ColumnConstraints halignment="RIGHT" minWidth="120"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+        </columnConstraints>
+
+        <Label text="Inicio (fecha / hora)"/>
+        <HBox spacing="6" GridPane.columnIndex="1">
+            <DatePicker fx:id="dpInicio"/>
+            <TextField fx:id="txtHoraInicio" promptText="HH:mm:ss" prefWidth="100"/>
+        </HBox>
+
+        <Label text="Fin (fecha / hora)" GridPane.columnIndex="2"/>
+        <HBox spacing="6" GridPane.columnIndex="3">
+            <DatePicker fx:id="dpFin"/>
+            <TextField fx:id="txtHoraFin" promptText="HH:mm:ss" prefWidth="100"/>
+        </HBox>
+
+        <Label text="Observaciones" GridPane.rowIndex="1"/>
+        <TextArea fx:id="txtObservaciones"
+                  GridPane.rowIndex="1"
+                  GridPane.columnIndex="1"
+                  GridPane.columnSpan="3"
+                  wrapText="true"
+                  prefRowCount="3"/>
+    </GridPane>
+
+    <!-- Botonera -->
+    <HBox spacing="8" alignment="CENTER_RIGHT">
+        <Button fx:id="btnGuardar" text="Guardar" onAction="#handleGuardar" styleClass="btn-open">
+        <graphic>
+            <FontIcon iconLiteral="mdi2c-content-save" iconSize="16" iconColor="WHITE"/>
+        </graphic>
+    </Button>
+        <Button fx:id="btnCancelar" text="Cerrar" onAction="#handleCancelar" styleClass="btn-close">
+            <graphic>
+                <FontIcon iconLiteral="mdi2c-close-thick" iconSize="16" iconColor="WHITE"/>
+            </graphic>
+        </Button>
+    </HBox>
+</VBox>

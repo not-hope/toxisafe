@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.toxisafe.ui.controller.BroteController"
+            stylesheets="@/com/toxisafe/ui/css/clean-theme.css"
+            prefWidth="1200" prefHeight="800">
+    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Brotes" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="btnCrear" text="Nuevo brote" styleClass="btn-open" onAction="#handleCrear">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2p-plus" iconSize="16" iconColor="WHITE"/>
+                </graphic>
+            </Button>
+            <!-- Barra de búsqueda redondeada -->
+            <HBox spacing="10" alignment="CENTER_LEFT" styleClass="search-bar">
+                    <!-- Icono filtros (opcional) -->
+                    <TextField fx:id="txtFiltro" promptText="Buscar" styleClass="search-field" HBox.hgrow="ALWAYS"/>
+                <ComboBox fx:id="cmbScope" prefWidth="180" styleClass="icon-button"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="8" VBox.vgrow="ALWAYS">
+        <TableView fx:id="tablaBrotes" styleClass="table-elevated" VBox.vgrow="ALWAYS"
+                   maxHeight="Infinity">
+            <columns>
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="180"/>
+                <TableColumn fx:id="colFecha" text="Fecha inicio" prefWidth="120"/>
+                <TableColumn fx:id="colResponsable" text="Responsable" prefWidth="200"/>
+                <TableColumn fx:id="colCreador" text="Creador" prefWidth="200"/>
+                <TableColumn fx:id="colEstado" text="Estado" prefWidth="100"/>
+                <TableColumn fx:id="colAcciones" text="Acciones" prefWidth="100"/>
+            </columns>
+        </TableView>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+            <Button fx:id="btnAsignar" text="Asignar encuestadores" onAction="#handleAsignar">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2a-account-plus" iconSize="16" iconColor="WHITE"/>
+                </graphic>
+            </Button>
+            <Button fx:id="btnEditar" text="Editar" onAction="#handleEditar">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2p-pencil" iconSize="16" iconColor="WHITE"/>
+                </graphic>
+            </Button>
+            <Button fx:id="btnAnalisis" text="Análisis" onAction="#handleAnalisis">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2f-file-chart" iconSize="16" iconColor="WHITE"/>
+                </graphic>
+            </Button>
+            <Button fx:id="btnExpuestos" text="Expuestos" onAction="#handleExpuestos">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2e-emoticon-sick" iconSize="16" iconColor="WHITE"/>
+                </graphic>
+            </Button>
+            <Button fx:id="btnEliminar" text="Eliminar" onAction="#handleEliminar" styleClass="btn-danger">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2d-delete" iconSize="16" iconColor="WHITE"/>
+                </graphic>
+            </Button>
+            <Button fx:id="btnCerrar" text="Cerrar" onAction="#handleCerrarBrote" styleClass="btn-close">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2l-lock" iconSize="16" iconColor="WHITE"/>
+                </graphic>
+            </Button>
+            <Button fx:id="btnReabrir" text="Activar" onAction="#handleReabrirBrote" styleClass="btn-open">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2l-lock-open-variant" iconSize="16" iconColor="WHITE"/>
+                </graphic>
+            </Button>
+
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,8 @@
+/* Opcional: tipografía base */
+.root { -fx-font-size: 12px; }
+
+/* Mantener texto legible en deshabilitados (si lo reutilizas en otras pantallas) */
+.check-box:disabled    { -fx-opacity: 1.0; }
+.check-box:disabled > .label { -fx-opacity: 0.6; }
+.text-input:disabled   { -fx-opacity: 0.85; }
+.label:disabled        { -fx-opacity: 0.85; }

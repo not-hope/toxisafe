@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.toxisafe</groupId>
+    <artifactId>toxisafe-app</artifactId>
+    <version>1.0</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <javafx.version>17.0.2</javafx.version> <!-- O la versión de JavaFX utilizada -->
+        <sqlite.jdbc.version>3.40.0.0</sqlite.jdbc.version>
+        <gson.version>2.10.1</gson.version>
+        <junit.jupiter.version>5.10.0</junit.jupiter.version>
+        <mockito.version>5.7.0</mockito.version>
+    </properties>
+
+    <dependencies>
+        <!-- JavaFX -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+
+        <!-- SQLite JDBC Driver -->
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>${sqlite.jdbc.version}</version>
+        </dependency>
+
+        <!-- Google Gson para JSON -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+        </dependency>
+
+        <!-- JUnit 5 para pruebas unitarias -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Mockito para mocks en pruebas -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Trabajar con PDFs -->
+        <dependency>
+            <groupId>com.github.librepdf</groupId>
+            <artifactId>openpdf</artifactId>
+            <version>1.3.39</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>2.0.30</version>
+        </dependency>
+
+        <!-- Serializa/deserializa JSON - objetos Java -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.17.1</version>
+        </dependency>
+
+        <!-- Soporte de iconos vectoriales en JavaFX -->
+        <dependency>
+            <groupId>org.kordamp.ikonli</groupId>
+            <artifactId>ikonli-javafx</artifactId>
+            <version>12.3.1</version>
+        </dependency>
+
+        <!-- Paquete de iconos Material Design v2 para Ikonli -->
+        <dependency>
+            <groupId>org.kordamp.ikonli</groupId>
+            <artifactId>ikonli-materialdesign2-pack</artifactId>
+            <version>12.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.4.1</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+            <!-- Plugin para JavaFX para crear JAR ejecutable -->
+            <!--<plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <mainClass>com.toxisafe.app.MainApplication</mainClass>
+                </configuration>
+            </plugin>-->
+            <!-- Plugin para crear un JAR con todas las dependencias (fat JAR) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.toxisafe.app.MainApplication</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <!-- Tu clase principal (app NO modular) -->
+                    <mainClass>com.toxisafe.app.MainApplication</mainClass>
+                    <!-- Nombre del ejecutable dentro de la imagen -->
+                    <launcher>toxisafe</launcher>
+
+                    <!-- Optimización de la imagen jlink -->
+                    <stripDebug>true</stripDebug>
+                    <noManPages>true</noManPages>
+                    <noHeaderFiles>true</noHeaderFiles>
+                    <compress>2</compress>
+
+                    <!-- Nombre de la imagen resultante -->
+                    <jlinkImageName>toxisafe-image</jlinkImageName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jlink</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- jpackage: genera EXE/MSI usando la imagen jlink -->
+            <plugin>
+                <groupId>org.panteleyev</groupId>
+                <artifactId>jpackage-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <!-- Nombre visible para el usuario -->
+                    <name>ToxiSafe</name>
+                    <!-- Usa la versión del proyecto -->
+                    <appVersion>${project.version}</appVersion>
+
+                    <!-- Tipo de salida: exe o msi (MSI requiere WiX Toolset instalado) -->
+                    <type>EXE</type>
+                    <destination>${project.build.directory}/jpackage</destination>
+
+                    <!-- La imagen de runtime creada por javafx:jlink -->
+                    <runtimeImage>${java.home}</runtimeImage>
+                    <!-- Carpeta donde jlink deja tu jar y dependencias -->
+                    <input>${project.build.directory}</input>
+
+                    <!-- Jar principal tal cual lo genera Maven (no fat jar) -->
+                    <mainJar>${project.artifactId}-${project.version}-jar-with-dependencies.jar</mainJar>
+
+                    <!-- Clase principal (no modular) -->
+                    <mainClass>com.toxisafe.app.MainApplication</mainClass>
+
+                    <!-- Opcionales de Windows -->
+                    <icon>${project.basedir}/src/main/resources/app.ico</icon>
+                    <winMenu>true</winMenu>
+                    <winShortcut>true</winShortcut>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
